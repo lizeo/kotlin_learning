@@ -3,7 +3,6 @@ package pl.corp.wyrwas.controller
 import io.swagger.annotations.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import pl.corp.wyrwas.Something
 import pl.corp.wyrwas.model.PersonalData
 import pl.corp.wyrwas.model.User
 import pl.corp.wyrwas.repository.UserRepository
@@ -27,8 +26,10 @@ class HelloController {
 
     @GetMapping(value = "/kopyta")
     fun main() {
-        val something = Something()
-        val personalData = PersonalData("", "", "")
+        val personalData = PersonalData()
+        personalData.email = "grzes@gmail.com"
+        personalData.login = "liz"
+        personalData.passwordHash = "hashhash"
         val user = User(1, personalData, ArrayList())
 
         userRepo.save(user)
