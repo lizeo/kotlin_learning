@@ -1,4 +1,15 @@
 package pl.corp.wyrwas.model
 
-data class PersonalData (val login : String, val email : String, val passwordHash : String) {
-}
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.ManyToOne
+
+@Entity
+data class PersonalData (
+        @Id @GeneratedValue val id : Long = -1L,
+        //@ManyToOne val user : User = User(),
+        var login : String = "",
+        var email : String = "",
+        var passwordHash : String = ""
+)

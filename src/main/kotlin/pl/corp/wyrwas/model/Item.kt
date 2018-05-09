@@ -3,14 +3,17 @@ package pl.corp.wyrwas.model
 import pl.corp.wyrwas.actions.Exchangeable
 import pl.corp.wyrwas.actions.Sellable
 import java.math.BigDecimal
+import javax.persistence.*
 
-
-abstract class Item (
-        val name : String,
-        val description : String,
-        val color : String,
-        var opinions : List<String>,
-        val demandPrice : BigDecimal) : Sellable, Exchangeable {
+@Entity(name = "item")
+open class Item (
+        @Id @GeneratedValue open val id : Long = -1L,
+        open val name : String,
+        open val description : String,
+        open val color : String,
+        @ElementCollection open var opinions : List<String>,
+        open val demandPrice : BigDecimal,
+        @ManyToOne open val user : User) : Sellable, Exchangeable {
 
     override val price: BigDecimal
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.

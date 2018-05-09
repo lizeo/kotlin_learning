@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @EntityScan(basePackages = arrayOf("pl.corp.wyrwas"))
 @EnableJpaRepositories(basePackages = arrayOf("pl.corp.wyrwas"))
-class JpaConfig {
+open class JpaConfig {
 }
