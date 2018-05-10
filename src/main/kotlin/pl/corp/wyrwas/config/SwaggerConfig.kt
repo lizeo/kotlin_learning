@@ -13,16 +13,19 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 import springfox.documentation.builders.PathSelectors.regex
 import com.google.common.base.Predicates.or
 import com.google.common.collect.ImmutableList
+import org.springframework.context.annotation.Import
 import org.springframework.web.bind.annotation.RequestMethod
 import springfox.documentation.builders.ResponseMessageBuilder
 import springfox.documentation.schema.ModelRef
+import kotlin.reflect.KClass
 
 @Configuration
 @EnableSwagger2
-class SwaggerConfig {
+@Import(value = [Class.forName("springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration")] as Array<out KClass<*>>)
+open class SwaggerConfig {
 
     @Bean
-    fun postsApi(): Docket {
+    open fun postsApi(): Docket {
         val docket = Docket(DocumentationType.SWAGGER_2).groupName("public-api")
                 .apiInfo(apiInfo()).select().paths(postPaths()).build()
         docket.globalResponseMessage(RequestMethod.GET, ImmutableList.of(
@@ -32,7 +35,7 @@ class SwaggerConfig {
     }
 
     private fun postPaths(): Predicate<String> {
-        return regex("/api/*")
+        return regex("/*")
     }
 
     private fun apiInfo(): ApiInfo {

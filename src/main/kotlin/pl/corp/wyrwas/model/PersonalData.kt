@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne
 @Entity
 data class PersonalData (
         @Id @GeneratedValue val id : Long = -1L,
-        //@ManyToOne val user : User = User(),
         var login : String = "",
         var email : String = "",
         var passwordHash : String = ""

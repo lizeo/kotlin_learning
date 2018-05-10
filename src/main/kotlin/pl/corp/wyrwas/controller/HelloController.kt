@@ -24,7 +24,7 @@ class HelloController {
     @Autowired
     lateinit var userRepo: UserRepository
 
-    @GetMapping(value = "/kopyta")
+    @GetMapping(value = "/amIWorking")
     fun main() {
         val personalData = PersonalData()
         personalData.email = "grzes@gmail.com"

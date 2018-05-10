@@ -5,9 +5,8 @@ import pl.corp.wyrwas.actions.Sellable
 import java.math.BigDecimal
 import javax.persistence.*
 
-@Entity(name = "item")
-open class Item (
-        @Id @GeneratedValue open val id : Long = -1L,
+open abstract class Item (
+        open val id : Long = -1L,
         open val name : String,
         open val description : String,
         open val color : String,
